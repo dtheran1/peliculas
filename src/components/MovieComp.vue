@@ -6,12 +6,16 @@
       <p class="card-text">
         {{ movie.synopsis }}
       </p>
-      <button
-        class="btn"
-        :class="btnStatus"
-        @click="toggleLike"
-        v-text="like ? 'Favorita' : 'Agregar a Favoritas'"
-      ></button>
+      <button class="btn" :class="btnStatus" @click="toggleLike">
+        <span v-text="like ? 'Favorita' : 'Agregar a Favoritas'"></span>
+        <i
+          class="fa-heart"
+          :class="{
+            far: !like,
+            fas: like,
+          }"
+        ></i>
+      </button>
     </div>
   </div>
 </template>
@@ -23,7 +27,9 @@ export default {
       message: "Hola soy el mensaje de movieComp",
     };
   },
+  filters:{
 
+  },
   props: {
     movie: {
       type: Object,
